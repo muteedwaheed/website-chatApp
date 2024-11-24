@@ -230,3 +230,118 @@ const Container = styled.div`
     }
   }
 `;
+// const Container = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-end;
+//   align-items: center;
+//   background-color: #dcf8c6;
+//   padding: 0 2rem;
+//   width: 100%;
+
+//   .input-container {
+//     display: flex;
+//     align-items: center;
+//     width: 100%;
+//     background-color: #eeeeee;
+//     border-radius: 20px;
+//     padding: 10px 0;
+//     position: relative;
+//     box-sizing: border-box;
+//   }
+
+//   .input-wrapper {
+//     display: flex;
+//     align-items: center;
+//     width: 100%;
+//     margin-right: 10px;
+//     position: relative;
+//     background-color: transparent;
+//   }
+
+//   .emoji {
+//     position: absolute;
+//     left: 10px;
+//     cursor: pointer;
+//     font-size: 1.5rem;
+//   }
+
+//   input {
+//     width: 100%;
+//     height: 0px;
+//     padding-left: 35px; /* Adjust padding to accommodate emoji icon */
+//     background-color: transparent;
+//     border: none;
+//     color: #333;
+//     font-size: 1rem;
+//     border-radius: 15px;
+//     box-sizing: border-box;
+
+//     &:focus {
+//       outline: none;
+//     }
+//   }
+
+//   .button-container {
+//     display: flex;
+//     align-items: center;
+//     gap: 8px;
+//     position: absolute;
+//     right: 10px;
+
+//     button {
+//       padding: 10px;
+//       border-radius: 50%;
+//       background-color: #25d366;
+//       color: white;
+//       border: none;
+//       cursor: pointer;
+
+//       svg {
+//         font-size: 1.5rem;
+//       }
+//     }
+//   }
+
+//   /* Responsive styling for mobile */
+//   @media screen and (max-width: 719px) {
+//     padding: 0 1rem;
+//     .input-container {
+//       padding: 8px 0;
+//     }
+
+//     .input-wrapper {
+//       margin-right: 0;
+//     }
+
+//     input {
+//       font-size: 0.9rem;
+//       padding-left: 30px;
+//     }
+
+//     .button-container {
+//       gap: 5px;
+
+//       button {
+//         padding: 8px;
+//         svg {
+//           font-size: 1.3rem;
+//         }
+//       }
+//     }
+//   }
+
+//   /* Responsive styling for tablet/laptop screens */
+//   @media screen and (min-width: 720px) and (max-width: 1080px) {
+//     padding: 0 1rem;
+//     .input-container {
+//       padding: 10px 0;
+//     }
+
+//     input {
+//       font-size: 1rem;
+//       padding-left: 35px;
+//     }
+//   }
+// `;
+

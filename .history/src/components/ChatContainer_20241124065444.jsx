@@ -20,8 +20,7 @@ export default function ChatContainer({ currentChat, socket }) {
     });
   }, []);
 
-useEffect(() => {
-  const fetchMessages = async () => {
+  useEffect(async () => {
     const data = await JSON.parse(
       localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
     );
@@ -30,11 +29,7 @@ useEffect(() => {
       to: currentChat._id,
     });
     setMessages(response.data);
-  };
-
-  fetchMessages();
-}, [currentChat]);
-
+  }, [currentChat]);
 
   useEffect(() => {
     const getCurrentChat = async () => {

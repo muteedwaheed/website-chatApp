@@ -53,23 +53,18 @@ export default function SetAvatar() {
     }
   };
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      const data = [];
-      for (let i = 0; i < 4; i++) {
-        const image = await axios.get(
-          `${api}/${Math.round(Math.random() * 1000)}`
-        );
-        const buffer = new Buffer(image.data);
-        data.push(buffer.toString("base64"));
-      }
-      setAvatars(data);
-      setIsLoading(false);
-    };
-
-    fetchImages();
+  useEffect(async () => {
+    const data = [];
+    for (let i = 0; i < 4; i++) {
+      const image = await axios.get(
+        `${api}/${Math.round(Math.random() * 1000)}`
+      );
+      const buffer = new Buffer(image.data);
+      data.push(buffer.toString("base64"));
+    }
+    setAvatars(data);
+    setIsLoading(false);
   }, []);
-
   return (
     <>
       {isLoading ? (
@@ -118,7 +113,6 @@ const Container = styled.div`
   background-color: #075e54;
   height: 100vh;
   width: 100vw;
-  padding: 1rem;
 
   .loader {
     max-inline-size: 100%;
@@ -127,67 +121,42 @@ const Container = styled.div`
   .title-container {
     h1 {
       color: white;
-      font-size: 1.5rem;
-      text-align: center;
     }
   }
-
   .avatars {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    justify-items: center;
-    width: 100%;
+    display: flex;
+    gap: 2rem;
 
     .avatar {
-      border: 0.3rem solid transparent;
-      padding: 0.3rem;
-      border-radius: 50%;
+      border: 0.4rem solid transparent;
+      padding: 0.4rem;
+      border-radius: 5rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: 0.3s ease-in-out;
-
+      transition: 0.5s ease-in-out;
       img {
-        height: 4rem;
-        width: 4rem;
-        border-radius: 50%;
-        transition: 0.3s ease-in-out;
+        height: 6rem;
+        transition: 0.5s ease-in-out;
       }
     }
-
     .selected {
-      border: 0.3rem solid #25d366;
+      border: 0.4rem solid #25d366;
     }
   }
-
   .submit-btn {
     background-color: #25d366;
     color: white;
-    padding: 0.8rem 1.5rem;
+    padding: 1rem 2rem;
     border: none;
     font-weight: bold;
     cursor: pointer;
     border-radius: 0.4rem;
     font-size: 1rem;
     text-transform: uppercase;
-    width: 90%;
-    max-width: 400px;
-    transition: background-color 0.3s ease-in-out;
-
     &:hover {
       background-color: #fff;
-      color: #25d366;
-    }
-
-    @media (max-width: 768px) {
-      font-size: 0.9rem;
-      padding: 0.7rem 1.2rem;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 0.8rem;
-      padding: 0.6rem 1rem;
+      color: #25d366
     }
   }
 `;

@@ -105,30 +105,20 @@ export default function ChatInput({ handleSendMsg }) {
 const Container = styled.div`
   display: grid;
   align-items: center;
-  grid-template-columns: 10% 90%; /* Adjusting the layout to make buttons smaller on mobile */
+  grid-template-columns: 5% 95%;
   background-color: #dcf8c6;
   padding: 0 2rem;
-
   @media screen and (min-width: 720px) and (max-width: 1080px) {
     padding: 0 1rem;
     gap: 1rem;
   }
-
-  /* Mobile screen styling */
-  @media screen and (max-width: 719px) {
-    grid-template-columns: 15% 70% 15%; /* More space for input on mobile */
-    padding: 0.5rem;
-    gap: 1rem;
-  }
-
   .button-container {
     display: flex;
     align-items: center;
     color: white;
     gap: 2px;
-    position: relative;
+    position : relative ;
     margin-right: -32px;
-
     .emoji {
       position: relative;
       svg {
@@ -136,7 +126,6 @@ const Container = styled.div`
         color: #ffff00c8;
         cursor: pointer;
       }
-
       .emoji-picker-react {
         position: absolute;
         top: -350px;
@@ -165,41 +154,33 @@ const Container = styled.div`
       }
     }
   }
-
   .input-container {
     width: 100%;
     border-radius: 6px;
     display: flex;
     align-items: center;
-    gap: 5rem; /* Reduced gap for better mobile responsiveness */
-    background-color: #bbbbbb;
-    color: white;
-
+    gap: 2rem;
+    background-color: #bbbbbb	;
+    color:white;
     input {
-      width: 100%;
-      height: 50px;
+      width: 120%;
+      height: 60%;
       background-color: transparent;
       color: white;
       border: none;
       padding-left: 1rem;
-      font-size: 1.1rem; /* Slightly smaller font size for mobile */
+      font-size: 1.2rem;
       overflow: hidden;
-
+  
       &::selection {
         background-color: #9a86f3;
       }
       &:focus {
         outline: none;
       }
-
-      /* Font size adjustment for mobile */
-      @media screen and (max-width: 719px) {
-        font-size: 1rem; /* Smaller font size on mobile */
-      }
     }
-
     button {
-      padding: 0.3rem 1rem;
+      padding: 0.3rem 2rem;
       border-radius: 8px;
       display: flex;
       justify-content: center;
@@ -207,26 +188,16 @@ const Container = styled.div`
       background-color: #25d366;
       border: none;
       cursor: pointer;
-
-      svg {
-        font-size: 1.5rem;
-        color: white;
-      }
-
-      /* Responsive button size */
-      @media screen and (max-width: 719px) {
-        padding: 0.3rem;
-        svg {
-          font-size: 1.2rem;
-        }
-      }
-
       @media screen and (min-width: 720px) and (max-width: 1080px) {
         padding: 0.3rem 1rem;
         svg {
-          font-size: 1.5rem;
+          font-size: 1rem;
         }
       }
+      svg {
+        font-size: 2rem;
+        color: white;
+      }
     }
-  }
+  }  
 `;

@@ -100,7 +100,6 @@ const FormContainer = styled.div`
   gap: 1rem;
   align-items: center;
   background-color: #dcf8c6;
-
   .brand {
     display: flex;
     align-items: center;
@@ -112,7 +111,6 @@ const FormContainer = styled.div`
     h1 {
       color: white;
       text-transform: uppercase;
-      font-size: 2rem; /* Adjusted for mobile */
     }
   }
 
@@ -121,29 +119,26 @@ const FormContainer = styled.div`
     flex-direction: column;
     gap: 2rem;
     background-color: #075e54;
-    border-radius: 1.5rem; /* Slightly smaller for mobile */
-    padding: 3rem; /* Reduced padding for smaller screens */
-    width: 90%; /* Set width relative to screen size */
-    max-width: 400px; /* Restrict width for larger screens */
+    border-radius: 2rem;
+    padding: 5rem;
   }
-
   input {
     background-color: transparent;
-    padding: 0.8rem; /* Reduced padding for better fit */
+    padding: 1rem;
     border: 0.1rem solid #128c7e;
     border-radius: 0.4rem;
     color: white;
+    width: 100%;
     font-size: 1rem;
     &:focus {
       border: 0.1rem solid #25d366;
       outline: none;
     }
   }
-
   button {
     background-color: #25d366;
     color: white;
-    padding: 0.8rem 1.5rem; /* Reduced padding for buttons */
+    padding: 1rem 2rem;
     border: none;
     font-weight: bold;
     cursor: pointer;
@@ -152,56 +147,16 @@ const FormContainer = styled.div`
     text-transform: uppercase;
     &:hover {
       background-color: #dcf8c6;
-      color: #25d366;
+      color: #25d366
     }
   }
-
   span {
     color: white;
     text-transform: uppercase;
-    font-size: 0.9rem; /* Adjusted for readability on smaller screens */
     a {
       color: #25d366;
       text-decoration: none;
       font-weight: bold;
-    }
-  }
-
-  /* Responsive Design */
-  @media screen and (max-width: 768px) {
-    form {
-      padding: 2rem; /* Smaller padding for tablets and mobile */
-      gap: 1.5rem; /* Reduced gap */
-    }
-    .brand h1 {
-      font-size: 1.5rem; /* Smaller brand font size */
-    }
-    button {
-      padding: 0.8rem; /* Adjust button padding for mobile */
-      font-size: 0.9rem;
-    }
-    input {
-      padding: 0.7rem; /* Smaller input padding */
-      font-size: 0.9rem; /* Adjust input text size */
-    }
-    span {
-      font-size: 0.8rem; /* Adjust span text size */
-    }
-  }
-
-  @media screen and (max-width: 480px) {
-    form {
-      padding: 1.5rem; /* Compact padding for smaller screens */
-    }
-    .brand h1 {
-      font-size: 1.2rem; /* Smaller font for mobile screens */
-    }
-    input,
-    button {
-      font-size: 0.8rem; /* Smaller text size for input and buttons */
-    }
-    span {
-      font-size: 0.7rem;
     }
   }
 `;

@@ -15,13 +15,12 @@ export default function ChatContainer({ currentChat, socket }) {
   const utteranceRef = useRef(new SpeechSynthesisUtterance());
 
   useEffect(() => {
-    utteranceRef.current.addEventListener("end", () => {
-      setSpeechState("stopped");
+    utteranceRef.current.addEventListener('end', () => {
+      setSpeechState('stopped');
     });
   }, []);
 
-useEffect(() => {
-  const fetchMessages = async () => {
+  useEffect(async () => {
     const data = await JSON.parse(
       localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
     );
@@ -30,11 +29,7 @@ useEffect(() => {
       to: currentChat._id,
     });
     setMessages(response.data);
-  };
-
-  fetchMessages();
-}, [currentChat]);
-
+  }, [currentChat]);
 
   useEffect(() => {
     const getCurrentChat = async () => {
@@ -84,38 +79,38 @@ useEffect(() => {
   }, [messages]);
 
   const playText = (text, e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (speechState === "playing" && activeMessage !== text) {
-      alert("Please stop the current text before playing another.");
-      return;
-    }
+  if (speechState === "playing" && activeMessage !== text) {
+    alert("Please stop the current text before playing another.");
+    return;
+  }
 
-    if (speechState === "paused") {
-      stopText(e);
-    }
+  if (speechState === "paused") {
+    stopText(e);
+  }
 
-    utteranceRef.current.text = text;
-    utteranceRef.current.lang = "en-IN"; // Set language to en-IN
-    speechSynthesis.speak(utteranceRef.current);
-    setActiveMessage(text);
-    setSpeechState("playing");
-  };
-
+  utteranceRef.current.text = text;
+  utteranceRef.current.lang = "en-IN"; // Set language to en-IN
+  speechSynthesis.speak(utteranceRef.current);
+  setActiveMessage(text);
+  setSpeechState("playing");
+};
+  
   const pauseText = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     speechSynthesis.pause();
     setSpeechState("paused");
   };
 
   const resumeText = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     speechSynthesis.resume();
     setSpeechState("playing");
   };
 
   const stopText = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     speechSynthesis.cancel();
     setSpeechState("stopped");
     setActiveMessage(null);
@@ -142,38 +137,30 @@ useEffect(() => {
           return (
             <div ref={scrollRef} key={uuidv4()}>
               <div
-                className={`message ${
-                  message.fromSelf ? "sended" : "recieved"
-                }`}
+                className={`message ${message.fromSelf ? "sended" : "recieved"
+                  }`}
               >
                 <div className="content ">
                   <p>{message.message}</p>
-                  {speechState === "playing" &&
-                  activeMessage === message.message ? (
+                  {speechState === "playing" && activeMessage === message.message ? (
                     <>
-                      <button className="btns" onClick={pauseText}>
-                        <i class="fa-solid fa-pause"></i>
-                      </button>
-                      <button className="btns stop" onClick={stopText}>
-                        <i class="fa-solid fa-stop"></i>
-                      </button>
+                      <button className="btns" onClick={pauseText}><i class="fa-solid fa-pause"></i></button>
+                      <button className="btns stop" onClick={stopText}><i class="fa-solid fa-stop"></i></button>
                     </>
-                  ) : speechState === "paused" &&
-                    activeMessage === message.message ? (
-                    <button className="btns" onClick={resumeText}>
-                      <i class="fa-solid fa-play"></i>
-                    </button>
                   ) : (
-                    (speechState === "stopped" || speechState === "paused") && (
-                      <button
-                        className="btns"
-                        onClick={(e) => playText(message.message, e)}
-                      >
-                        <i class="fa-solid fa-play"></i>
-                      </button>
+                    speechState === "paused" && activeMessage === message.message ? (
+                      <button className="btns" onClick={resumeText}>
+                      <i class="fa-solid fa-play"></i></button>
+                    ) : (
+                      (speechState === "stopped" || speechState === "paused") && (
+                        <button className="btns" onClick={(e) => playText(message.message,e)}>
+                          <i class="fa-solid fa-play"></i>
+                        </button>
+                      )
                     )
                   )}
                 </div>
+
               </div>
             </div>
           );
@@ -192,18 +179,18 @@ const Container = styled.div`
   @media screen and (min-width: 720px) and (max-width: 1080px) {
     grid-template-rows: 15% 70% 15%;
   }
-  .btns {
-    position: relative;
-    margin-top: 8px;
+  .btns{
+    position : relative ;
+    margin-top : 8px;
     background: none;
     border: none;
     color: #fff;
     font-size: 20px;
     cursor: pointer;
   }
-  .stop {
-    position: relative;
-    margin-left: 5px;
+  .stop{
+    position : relative ;
+    margin-left : 5px;
   }
   .chat-header {
     display: flex;
@@ -259,7 +246,7 @@ const Container = styled.div`
       justify-content: flex-end;
       .content {
         background-color: #128c7e;
-        color: white;
+        color:white;
       }
     }
     .recieved {

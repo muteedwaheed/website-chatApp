@@ -5,18 +5,13 @@ export default function Contacts({ contacts, changeChat }) {
   const [currentUserName, setCurrentUserName] = useState(undefined);
   const [currentUserImage, setCurrentUserImage] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);
-  useEffect(() => {
-    const fetchUserData = async () => {
-      const data = await JSON.parse(
-        localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
-      );
-      setCurrentUserName(data.username);
-      setCurrentUserImage(data.avatarImage);
-    };
-
-    fetchUserData();
+  useEffect(async () => {
+    const data = await JSON.parse(
+      localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+    );
+    setCurrentUserName(data.username);
+    setCurrentUserImage(data.avatarImage);
   }, []);
-
   const changeCurrentChat = (index, contact) => {
     setCurrentSelected(index);
     changeChat(contact);
@@ -73,19 +68,19 @@ const Container = styled.div`
   overflow: hidden;
   border: 1px solid #054640;
   background-color: #128c7e;
-
   .brand {
     display: flex;
     align-items: center;
     gap: 1rem;
     justify-content: center;
-
+    img {
+      height: 2rem;
+    }
     h3 {
       color: white;
       text-transform: uppercase;
     }
   }
-
   .contacts {
     display: flex;
     flex-direction: column;
@@ -100,7 +95,6 @@ const Container = styled.div`
         border-radius: 1rem;
       }
     }
-
     .contact {
       background-color: #ffffff34;
       min-height: 5rem;
@@ -112,20 +106,17 @@ const Container = styled.div`
       gap: 1rem;
       align-items: center;
       transition: 0.5s ease-in-out;
-
       .avatar {
         img {
           height: 3rem;
         }
       }
-
       .username {
         h3 {
           color: white;
         }
       }
     }
-
     .selected {
       background-color: #25d366;
     }
@@ -137,60 +128,21 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     gap: 2rem;
-
     .avatar {
       img {
         height: 4rem;
         max-inline-size: 100%;
       }
     }
-
     .username {
       h2 {
         color: white;
       }
     }
-
     @media screen and (min-width: 720px) and (max-width: 1080px) {
       gap: 0.5rem;
-
       .username {
         h2 {
-          font-size: 1rem;
-        }
-      }
-    }
-
-    /* Add more responsive adjustments */
-    @media screen and (max-width: 600px) {
-      gap: 1rem;
-      flex-direction: column;
-      padding: 1rem;
-
-      .username h2 {
-        font-size: 1.2rem;
-        text-align: center;
-      }
-
-      .avatar img {
-        height: 3rem;
-      }
-    }
-  }
-
-  /* For smaller screens */
-  @media screen and (max-width: 480px) {
-    .contacts {
-      gap: 0.5rem;
-
-      .contact {
-        width: 95%;
-        padding: 0.3rem;
-        .avatar img {
-          height: 2.5rem;
-        }
-
-        .username h3 {
           font-size: 1rem;
         }
       }
