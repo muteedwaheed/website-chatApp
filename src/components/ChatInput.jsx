@@ -87,7 +87,7 @@ export default function ChatInput({ handleSendMsg }) {
           type="text"
           placeholder="type your message here"
           onChange={handleInputChange}
-          value={typedMsg} // Display the typed message in the input field
+          value={typedMsg}  
         />
         <div className="button-container">
           <button type="submit">

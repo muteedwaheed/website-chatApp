@@ -46,6 +46,8 @@ export default function Login() {
         username,
         password,
       });
+
+      console.log("data in login", data);
       if (data.status === false) {
         toast.error(data.msg, toastOptions);
       }
