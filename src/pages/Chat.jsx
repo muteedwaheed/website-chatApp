@@ -7,7 +7,7 @@ import { allUsersRoute, host } from "../utils/APIRoutes";
 import ChatContainer from "../components/ChatContainer";
 import Contacts from "../components/Contacts";
 import Welcome from "../components/Welcome";
-import background from '../assets/backrgound.jpg';
+import background from "../assets/backrgound.jpg";
 
 export default function Chat() {
   const navigate = useNavigate();
@@ -15,6 +15,33 @@ export default function Chat() {
   const [contacts, setContacts] = useState([]);
   const [currentChat, setCurrentChat] = useState(undefined);
   const [currentUser, setCurrentUser] = useState(undefined);
+
+  const API_URL = process.env.REACT_APP_API_HOST;
+
+  const userData = JSON.parse(
+    localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+  );
+  const userToken = userData.token;
+  // console.log("userToken", userToken);
+
+  const getUserThroughToken = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/api/auth/auth-login`, {
+        headers: {
+          "Content-Type": "application/json",
+          token: userToken,
+        },
+      });
+      const AuthData = response.data.data;
+      console.log("AuthData", AuthData);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  useEffect(() => {
+    getUserThroughToken();
+  }, [userToken]);
 
   useEffect(async () => {
     if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
@@ -45,7 +72,7 @@ export default function Chat() {
       }
     }
   }, [currentUser]);
-  
+
   const handleChatChange = (chat) => {
     setCurrentChat(chat);
   };

@@ -70,8 +70,6 @@ export default function Register() {
         password,
       });
 
-      console.log("data in register", data);
-
       if (data.status === false) {
         toast.error(data.msg, toastOptions);
       }
@@ -80,6 +78,8 @@ export default function Register() {
           process.env.REACT_APP_LOCALHOST_KEY,
           JSON.stringify(data.user)
         );
+
+        // navigate("/", { state: { token: userData.token } });
         navigate("/");
       }
     }
